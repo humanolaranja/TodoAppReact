@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 export default class Menu extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { activeIndex: 0 };
+  }
 
   render() {
     return(
@@ -10,10 +14,10 @@ export default class Menu extends Component {
             <a className='navbar-brand' href='#'><i className='fa fa-calendar-check-o'></i> TodoApp </a>
             <div className='collapse navbar-collapse' id='navbar'>
               <ul className='navbar-nav mr-auto'>
-                <li className='nav-item'>
+                <li className={this.state.activeIndex === 0 ? 'nav-item active': 'nav-item'} onClick={() => this.setState({activeIndex: 0})}>
                   <a className='nav-link' href='#/todos'>Tarefas</a>
                 </li>
-                <li className='nav-item'>
+                <li className={this.state.activeIndex === 1 ? 'nav-item active': 'nav-item'} onClick={() => this.setState({activeIndex: 1})}>
                   <a className='nav-link' href='#/about'>Sobre</a>
                 </li>
               </ul>
